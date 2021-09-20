@@ -9,6 +9,9 @@ Cleaner runs on file system shared with Registry service. It search for tags to 
 | Variable          | Default value                 | Description                                                     |
 |-------------------|-------------------------------|-----------------------------------------------------------------|
 | DRY_RUN           | `"true"`                      | You have to explictly set DRY_RUN=false to actually delete tags |
+| VOLUME            | `/var/lib/registry`           | Registry path                                                   |
+| CONFIG            | `/etc/docker/registry/config.yml` | Registry `config.yml` path                                  |
+| CLEAN_SCHEDULE    | `"0 1 * * 6"`                 | Clean schedule, crontab format. Default is to run every Saturday at 01:00AM |
 | REPOS_CLEAN_NEVER | `""`                          | Space separated list of repositories we should never cleanup. Each repo name can be [expr-type regular expression](https://www.gnu.org/software/coreutils/manual/html_node/String-expressions.html). Example: `REPOS_CLEAN_NEVER="public/.*-dotnet importantrepo .*/.*test"` |
 | TAGS_CLEAN_NEVER  | `"latest .*-latest v[.0-9]*"` | Space separated list of tags we should never cleanup. Each tag name can be [expr-type regular expression](https://www.gnu.org/software/coreutils/manual/html_node/String-expressions.html). Example: `TAGS_CLEAN_NEVER="latest .*-latest v[.0-9]*"` |
 | TAGS_KEEP_N       | `10`                          | How much images we should keep. This setting applies after TAGS_CLEAN_NEVER screening |

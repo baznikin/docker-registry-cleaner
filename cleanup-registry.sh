@@ -43,8 +43,13 @@ prefly_checks() {
   $DRY_RUN && echo "Running in dry-run mode. Set env DRY_RUN=false to actually clean your repo"
 
   #Check registry dir
-  if [ ! -d ${REPO_DIR} ]; then
-    echo "REPO_DIR doesn't exist. REPO_DIR=${REPO_DIR}"
+  if [ ! -d ${VOLUME} ]; then
+    echo "VOLUME directory doesn't exist. VOLUME=${VOLUME}"
+    exit 1
+  fi
+
+  if [ ! -d ${REPO} ]; then
+    echo "Repository directory doesn't exist, nothing to clean. REPO=${REPO}"
     exit 1
   fi
 }
